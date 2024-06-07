@@ -1,116 +1,95 @@
 import React, { useState } from "react";
-import { Transition } from "@headlessui/react";
-import { Link } from "react-router-dom";
-
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
+import pic from "../assets/hero.png";
+import { AiOutlineMenu } from "react-icons/ai";
+import { IoCloseSharp } from "react-icons/io5";
+import { Link } from "react-scroll";
+function Navbar() {
+  const [menu, setMenu] = useState(false);
+  const navItems = [
+    {
+      id: 1,
+      text: "Home",
+    },
+    {
+      id: 2,
+      text: "About",
+    },
+    {
+      id: 3,
+      text: "Portfolio",
+    },
+    {
+      id: 4,
+      text: "Experiance",
+    },
+    {
+      id: 5,
+      text: "Contact",
+    },
+  ];
   return (
-   <>
-   <div className="bg-black sticky z-10 top-0">
-   <nav className="bg-gray-800 p-4  rounded-xl shaded-xl">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-lg font-bold">
-          <a href="/">MyLogo</a>
+    <>
+      <div className="max-w-screen-2xl container mx-auto px-4 md:px-20 h-16 shadow-md fixed top-0 left-0 right-0 z-50 bg-white">
+        <div className="flex justify-between items-center h-16">
+          <div className=" flex space-x-2">
+            <img src={pic} className="h-12 w-12 rounded-full" alt="" />
+            <h1 className="font-semibold text-xl cursor-pointer">
+              Krishna<span className="text-green-500 text-2xl">l</span>
+              <p className="text-sm">Web Developer</p>
+            </h1>
+          </div>
+          {/* desktop navbar */}
+          <div>
+            <ul className="hidden md:flex space-x-8">
+              {navItems.map(({ id, text }) => (
+                <li
+                  className="hover:scale-105 duration-200 cursor-pointer"
+                  key={id}
+                >
+                  <Link
+                    to={text}
+                    smooth={true}
+                    duration={500}
+                    offset={-70}
+                    activeClass="active"
+                  >
+                    {text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div onClick={() => setMenu(!menu)} className="md:hidden">
+              {menu ? <IoCloseSharp size={24} /> : <AiOutlineMenu size={24} />}
+            </div>
+          </div>
         </div>
-        <div className="block lg:hidden">
-          <button onClick={toggleMenu} className="text-white">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {isOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
-        <div className="hidden lg:flex lg:items-center lg:w-auto w-full">
-          <ul className="lg:flex lg:justify-between text-white lg:space-x-4">
-            <Link to="/">
-              <span className="block lg:inline-block py-2 px-4"> Home</span>
-            </Link>
-            <Link to="/">
-              <span className="block lg:inline-block py-2 px-4"> About</span>
-            </Link>
-            <Link to="/">
-              <span className="block lg:inline-block py-2 px-4"> Services</span>
-            </Link>
-            <Link to="/">
-              <span className="block lg:inline-block py-2 px-4"> Contact</span>
-            </Link>
-          </ul>
-        </div>
+        {/* mobile navbar */}
+        {menu && (
+          <div className="bg-white">
+            <ul className="md:hidden flex flex-col h-screen items-center justify-center space-y-3 text-xl">
+              {navItems.map(({ id, text }) => (
+                <li
+                  className="hover:scale-105 duration-200 font-semibold cursor-pointer"
+                  key={id}
+                >
+                  <Link
+                    onClick={() => setMenu(!menu)}
+                    to={text}
+                    smooth={true}
+                    duration={500}
+                    offset={-70}
+                    activeClass="active"
+                  >
+                    {text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
-
-      <Transition
-        show={isOpen}
-        enter="transition ease-in-out duration-300 transform"
-        enterFrom="translate-x-full"
-        enterTo="translate-x-0"
-        leave="transition ease-in-out duration-300 transform"
-        leaveFrom="translate-x-0"
-        leaveTo="translate-x-full"
-      >
-        <div className="fixed right-0 top-0 w-40  bg-gray-800 shadow-lg p-4 z-50 rounded-xl">
-          <button onClick={toggleMenu} className="text-white mb-4">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-
-          <ul className="text-white">
-            <Link to="/">
-              <span className="block py-2 px-4"> Home</span>
-            </Link>
-            <Link to="/">
-              <span className="block py-2 px-4"> About</span>
-            </Link>
-
-            <Link to="/">
-              <span className="block py-2 px-4"> Services</span>
-            </Link>
-            <Link to="/">
-              <span className="block py-2 px-4"> Contact</span>
-            </Link>
-          </ul>
-        </div>
-      </Transition>
-    </nav>
-
-   </div>
-   </>
+    </>
   );
-};
+}
 
 export default Navbar;

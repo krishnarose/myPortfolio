@@ -1,29 +1,26 @@
-import './App.css'
-import { BrowserRouter,Router,Route, Routes } from 'react-router-dom'
-import Page404 from './Pages/Page404'
-import Home from './Pages/Home'
-import Navbar from './Pages/Navbar'
+import "./App.css";
+
+import Home from "./Pages/Home";
+import Navbar from "./Pages/Navbar";
+import About from "./Pages/About";
+import { Toaster } from "react-hot-toast";
+import Footer from "./Pages/Footer";
 
 function App() {
- 
-
   return (
     <>
-   <BrowserRouter>
-       < Navbar/>
-        <Routes>
-          <Route path="/*" element={<Page404 />} />
-          <Route path="/" element={<Home />} />
-
-          
-        </Routes>
-       
-      </BrowserRouter>
-    
-
-     
+     <>
+      <div>
+        <Navbar />
+        <Home />
+        <About />
+        
+        <Footer />
+      </div>
+      <Toaster />
     </>
-  )
+    </>
+  );
 }
 
-export default App
+export default App;
