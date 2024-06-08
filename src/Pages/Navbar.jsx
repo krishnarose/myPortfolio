@@ -16,11 +16,11 @@ function Navbar() {
     },
     {
       id: 3,
-      text: "Portfolio",
+      text: "Internship",
     },
     {
       id: 4,
-      text: "Experiance",
+      text: "Certificates",
     },
     {
       id: 5,
@@ -34,7 +34,7 @@ function Navbar() {
           <div className=" flex space-x-2">
             <img src={pic} className="h-12 w-12 rounded-full" alt="" />
             <h1 className="font-semibold text-xl cursor-pointer">
-              Krishna<span className="text-green-500 text-2xl">l</span>
+              Krishna Kumar<span className="text-green-500 text-2xl">l</span>
               <p className="text-sm">Web Developer</p>
             </h1>
           </div>

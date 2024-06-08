@@ -21,10 +21,11 @@ const About = () => {
       case "Skill":
         return (
           <div>
-            <ProgressBar skill="React" percentage={75} />
+            <ProgressBar skill="Reactjs" percentage={75} />
             <ProgressBar skill="JavaScript" percentage={70} />
             <ProgressBar skill="NodeJs" percentage={70} />
             <ProgressBar skill="TailwindCSS" percentage={80} />
+            <ProgressBar skill="Php Laravel FrameWork" percentage={75} />
             <ProgressBar skill="DataBase" percentage={70} />
           </div>
         );
