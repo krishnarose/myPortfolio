@@ -8,7 +8,7 @@ const Card = ({img}) => {
           <img
             src={img}
             alt="cognizance1.jpg"
-            className="w-[400px] h-[300px] rounded-xl cursor-pointer transition duration-500 ease-in-out hover:scale-110"
+            className="w-[400px] h-[300px] rounded-xl cursor-pointer "
           />
         </div>
       </div>

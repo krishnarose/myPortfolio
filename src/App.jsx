@@ -8,6 +8,8 @@ import Footer from "./Pages/Footer";
 import Intership from "./Pages/Intership";
 import Certificates from "./Pages/Certificates";
 
+import MyProject from "./Pages/MyProject"
+
 function App() {
   return (
     <>
@@ -18,6 +20,8 @@ function App() {
         <About />
         <Intership/>
         <Certificates />
+        {/* <Tictac /> */}
+        <MyProject />
         <Footer />
       </div>
       <Toaster />
